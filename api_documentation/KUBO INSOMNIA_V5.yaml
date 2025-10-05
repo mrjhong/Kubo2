@@ -1,0 +1,700 @@
+type: collection.insomnia.rest/5.0
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1752193201946
+  modified: 1752193201946
+  description: ""
+collection:
+  - name: USER
+    meta:
+      id: fld_bdd1eff3dd144114940906711a1f281d
+      created: 1759674460858
+      modified: 1759674460858
+      sortKey: -1759674460858
+      description: ""
+    children:
+      - url: "{{ _.url_api }}auth/register"
+        name: CREATE OR REGISTER USER
+        meta:
+          id: req_9250deea221f4c1f836618634c429ef7
+          created: 1759674468540
+          modified: 1759680504286
+          isPrivate: false
+          description: |-
+            
+            ## 📝 Descripción
+
+            Este endpoint permite registrar nuevos usuarios en el sistema.
+
+            ## 🔒 Autenticación
+
+            Este endpoint es de acceso público.
+            - No requiere token de autenticación para su uso.
+
+            ## 📦 Cuerpo de la Petición (Body)
+
+            El cuerpo de la petición debe ser enviado en formato JSON:
+
+            ```json
+            {
+              "username": "jhon",
+              "password": "123456"
+            }
+
+            ```
+            ##  respuesta de la peticion
+
+            ```json
+
+            {
+              "message": "Usuario registrado exitosamente"
+            }
+          sortKey: -1759674808347
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            "username":"jhon",
+            "password":"123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url_api }}auth/login"
+        name: LOGIN
+        meta:
+          id: req_96645b999fda4db3b502e00d0c8ed1bb
+          created: 1759674816463
+          modified: 1759680309163
+          isPrivate: false
+          description: >-
+            # ✨ Endpoint: Inicio de Sesión
+
+
+            ## 📍 URL
+
+
+            POST http://localhost:3000/api/auth/login
+
+
+            ##  Descripción
+
+
+            Este endpoint permite a los usuarios iniciar sesión en el sistema
+            utilizando sus credenciales (username y password).
+
+
+            ##  Autenticación
+
+
+            Este endpoint es de acceso público.
+
+            - No requiere token de autenticación para su uso.
+
+
+            ##  Cuerpo de la Petición (Body)
+
+
+            El cuerpo de la petición debe ser enviado en formato JSON:
+
+
+            ```json
+
+            {
+              "username": "jhon",
+              "password": "123456"
+            }
+
+
+            ```
+
+            ##  respuesta de la peticion
+
+
+            ```json
+
+            {
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJqaG9uIiwiaWF0IjoxNzU5Njc1NjE3LCJleHAiOjE3NTk2ODY0MTd9.Ojr0MwlrPwQgQQtKwa1knLOh3P5nh3dFHq7mM_E0Vqk"
+            }
+          sortKey: -1759674816463
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            "username":"jhon",
+            "password":"123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url_api }}auth/users"
+        name: USERS AND VIEW MOVIES
+        meta:
+          id: req_dec736fba0254ade9753be1217ed111a
+          created: 1759677496208
+          modified: 1759680123113
+          isPrivate: false
+          description: >-
+            
+            ##  Descripción
+
+
+            Este endpoint permite obtener todos los usuarios registrados en el
+            sistema junto con las películas que han visto. 
+
+
+            Si un usuario ha visto una película múltiples veces, el endpoint
+            mostrará la película la cantidad de veces que ha sido vista.
+
+
+            ##  Autenticación
+
+
+            Este endpoint está diseñado para ser de acceso público.
+
+
+            - No requiere la inclusión de un Bearer Token.
+
+
+
+            ##  Parámetros
+
+
+            Este endpoint no requiere parámetros de URL ni de consulta (query
+            parameters).
+
+
+            ##  Respuesta Exitosa (Código: 200 OK)
+
+
+            Devuelve un array de objetos JSON con los usuarios y las películas
+            que han visto, incluyendo el conteo de visualizaciones.
+
+
+            ```json
+
+            [
+            	{
+            		"user": {
+            			"id": 1,
+            			"username": null
+            		},
+            		"viewedForUser": [
+            			{
+            				"name": "It"
+            			},
+            			{
+            				"name": "It"
+            			},
+            			{
+            				"name": "It"
+            			},
+            			{
+            				"name": "It"
+            			}
+            		]
+            	},
+            	{
+            		"user": {
+            			"id": 2,
+            			"username": "jhon"
+            		},
+            		"viewedForUser": [
+            			{
+            				"name": "Una Esposa de Mentira"
+            			},
+            			{
+            				"name": "Una Esposa de Mentira"
+            			}
+            		]
+            	},
+            	{
+            		"user": {
+            			"id": 3,
+            			"username": "jhon"
+            		},
+            		"viewedForUser": []
+            	},
+            	{
+            		"user": {
+            			"id": 4,
+            			"username": "jhon"
+            		},
+            		"viewedForUser": []
+            	}
+            ]
+          sortKey: -1759677496208
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: MOVIE
+    meta:
+      id: fld_508de36c3dac464cae3c2d5e1b0b6849
+      created: 1759675640968
+      modified: 1759675640968
+      sortKey: -1759675640968
+      description: ""
+    children:
+      - url: "{{ _.url_api }}movies?category=1&orderbyrelease=1&pagination=1"
+        name: MOVIES
+        meta:
+          id: req_56fd2f0ec543430c881b0499019cd2bf
+          created: 1759675643725
+          modified: 1759679876773
+          isPrivate: false
+          description: >-
+            
+            ##  Descripción
+
+
+            Este endpoint permite obtener un listado de películas con diversos
+            filtros y opciones de ordenamiento.
+
+
+            ##  Autenticación
+
+
+            Este endpoint está diseñado para ser de acceso público.
+
+
+            - No requiere la inclusión de un Bearer Token.
+
+
+            ##  Parámetros de Consulta
+
+
+            | Parámetro | Tipo | Descripción | Valores |
+
+            |-----------|------|-------------|----------|
+
+            | `category` | integer | Filtra por categoría de película | **1** =
+            Terror<br>**2** = Suspenso<br>**3** = Drama<br>**4** = Comedia |
+
+            | `orderbyrelease` | integer | Ordena por fecha de lanzamiento |
+            **1** = Ascendente<br>**-1** = Descendente<br>**0** = Orden por
+            fecha de ingreso |
+
+            | `pagination` | integer | numero de pagina cada 10 registros | 1
+            hasta el numero de paginas devueltas |
+
+
+            ##  Categorías Disponibles
+
+
+            | ID | Categoría |
+
+            |----|-----------|
+
+            | 1  | Terror    |
+
+            | 2  | Suspenso  |
+
+            | 3  | Drama     |
+
+            | 4  | Comedia   |
+
+
+            ##  Ordenamiento (orderbyrelease)
+
+
+            | Valor | Descripción |
+
+            |-------|-------------|
+
+            | 1 | Orden ascendente por fecha de lanzamiento |
+
+            | -1 | Orden descendente por fecha de lanzamiento |
+
+            | 0 | Orden por fecha de ingreso al sistema |
+
+
+            ##  Respuesta Exitosa (Código: 200 OK)
+
+
+            ```json
+
+            {
+              "movies": [
+                {
+                  "id": 51,
+                  "name": "Ejemplo de Película",
+                  "category_id": 1,
+                  "release_date": "2024-10-04T05:00:00.000Z",
+                  "created_at": "2024-01-15T10:30:00.000Z"
+                }
+              ],
+              "pages": {
+                "total": 1,
+                "totalPages": 1,
+                "limit": 10,
+                "offset": 0,
+                "currentPage": 1
+              }
+            }
+          sortKey: -1759675643725
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url_api }}movies/news"
+        name: NEWS MOVIES
+        meta:
+          id: req_feacb9045e6b41b89005fe7a6f42dd01
+          created: 1759676015377
+          modified: 1759679473965
+          isPrivate: false
+          description: >-
+            
+            ## 📝 Descripción
+
+
+            Este endpoint permite obtener las películas más recientes que se han
+            estrenado.
+
+
+            La lógica de la consulta filtra todas las películas cuya fecha de
+            lanzamiento (`releaseDate`) sea menor o igual a 21 días respecto a
+            la fecha actual.
+
+
+            ## 🔒 Autenticación
+
+
+            Este endpoint está diseñado para ser de acceso público.
+
+
+            - No requiere la inclusión de un Bearer Token.
+
+
+            ## ⚙️ Parámetros
+
+
+            Este endpoint no requiere parámetros de URL ni de consulta (query
+            parameters).
+
+
+            ## 💡 Respuesta Exitosa (Código: 200 OK)
+
+
+            Devuelve un array de objetos JSON con los detalles de las películas
+            que cumplen con el criterio de haber sido estrenadas en los últimos
+            21 días.
+
+
+            ```json
+
+            {
+              "movies": [
+                {
+                  "id": 51,
+                  "name": "fast and furios 14",
+                  "category_id": null,
+                  "release_date": "2025-10-04T05:00:00.000Z",
+                  "created_at": null
+                }
+              ],
+              "pages": {
+                "total": 1,
+                "totalPages": 1,
+                "limit": 10,
+                "offset": 0,
+                "currentPage": 1
+              }
+            }
+          sortKey: -1759676015377
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url_api }}movies/show/33"
+        name: SHOW MOVIE BY USER
+        meta:
+          id: req_a60257cf4c024b09acf394a3b89b03ff
+          created: 1759676113277
+          modified: 1759679846882
+          isPrivate: false
+          description: >-
+            # 👁 Endpoint: Obtener Película por ID
+
+
+            ## 📍 URL
+
+
+            `GET {{ _.url_api }}/movies/show/{id}`
+
+
+            > **Ejemplo:** `GET http://localhost:3000/api/movies/show/33`
+
+
+            ---
+
+
+            ##  Descripción
+
+
+            Este *endpoint* permite **obtener los detalles de una película
+            específica** utilizando su **ID**.
+
+
+            ###  Registro de Vista
+
+            se debe proporcionar un **Bearer Token válido** en la solicitud,
+            para que el sistema automáticamente registre que el usuario
+            autenticado ha "visto" o interactuado con la película.
+
+
+
+
+            ---
+
+
+            ##  Autenticación
+
+
+            Para registrar la vista a nombre del usuario, debe incluir el
+            **Bearer Token** en el encabezado (`Header`) de la solicitud.
+
+
+            * **Encabezado:** `Authorization: Bearer <el_token_obtenido>`
+
+
+            ---
+
+
+            ##  Parámetros de la URL
+
+
+            | Parámetro | Tipo | Requerido | Descripción |
+
+            | :--- | :--- | :--- | :--- |
+
+            | `id` | `integer` | Sí | El **ID numérico** de la película que se
+            desea obtener. |
+
+
+            ---
+
+
+            ##  Respuesta Exitosa (Código: 200 OK)
+
+
+            Devuelve un objeto JSON con los detalles de la película.
+
+
+            ```json
+
+            {
+              "id": 33,
+              "name": "The Dark Knight",
+              "category_id": "Suspenso",
+              "release_date": "2011-02-11T05:00:00.000Z",
+              "created_at": "2025-10-05T04:30:51.000Z"
+            }
+          sortKey: -1759676113277
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_96645b999fda4db3b502e00d0c8ed1bb',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+          disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url_api }}movies"
+        name: CREATE MOVIE
+        meta:
+          id: req_44c4c28182954df9a0b13975dadbe250
+          created: 1759677215556
+          modified: 1759678801205
+          isPrivate: false
+          description: >+
+            # 🎬 Endpoint: Crear Película
+
+
+            ## 📍 URL
+
+
+            `POST {{ _.url_api }}/movies`
+
+
+            > **Ejemplo:** `POST http://localhost:3000/api/movies`
+
+
+            ---
+
+
+            ##  Descripción
+
+
+            Este *endpoint* permite **registrar una nueva película** en la base
+            de datos.
+
+            Se requiere enviar los siguientes campos en el cuerpo de la
+            solicitud (JSON):
+
+            * **Nombre** (`name`)
+
+            * **ID de la Categoría** (`category`)
+
+            * **Fecha de Lanzamiento** (`releaseDate`) en formato `YYYY-MM-DD`.
+
+
+            ---
+
+
+            ##  Autenticación
+
+
+            Para acceder a este *endpoint*, se debe incluir un **Bearer Token**
+            en el encabezado (`Header`) de la solicitud. Este *token* se obtiene
+            al iniciar sesión exitosamente en el *endpoint* de autenticación:
+
+            * **Endpoint de Login:** `POST /auth/login`
+
+            * **Encabezado:** `Authorization: Bearer <el_token_obtenido>`
+
+
+            ---
+
+            ---
+
+
+            ##  Categorías Disponibles
+
+
+            | ID | Categoría |
+
+            |----|------------|
+
+            | 1  | Terror |
+
+            | 2  | Suspenso |
+
+            | 3  | Drama |
+
+            | 4  | Comedia |
+
+
+            ##  Cuerpo de la Solicitud (JSON)
+
+
+            | Campo | Tipo | Requerido | Descripción |
+
+            | :--- | :--- | :--- | :--- |
+
+            | `name` | `string` | Sí | El título de la película. |
+
+            | `category` | `integer` | Sí | El ID numérico de la categoría. |
+
+            | `releaseDate` | `string` | Sí | La fecha de estreno en formato
+            `YYYY-MM-DD`. |
+
+
+
+
+            ```json
+
+            {
+              "name": "Fast and Furious 14",
+              "category": 1, 
+              "releaseDate": "2025-10-04"
+            }
+
+          sortKey: -1759677215556
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name":"fast and furios 14",
+            	"category":"1",
+            	"releaseDate":"2025-10-04"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_96645b999fda4db3b502e00d0c8ed1bb',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1752193211029
+    modified: 1752193211029
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1752193210962
+    modified: 1759674735612
+    isPrivate: false
+  data:
+    url_api: localhost:3000/api/
